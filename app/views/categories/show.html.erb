@@ -1,0 +1,21 @@
+<%= render "shared/header" %>
+
+<main role="main">
+
+  <div class="container">
+      <h1>Add Product to Category (<%= @category.name %>)</h1>
+      <div class="row">
+        <div class="col-md-12 text-right">
+          <%= render 'shared/back_button', link: categories_path %>
+        </div>
+      </div>
+
+      <div class="row">
+        <h2>Products already added (<%= @category.products.length %>)</h2>
+        <div class="col-md-12">
+          
+        </div>
+      </div>
+  </div>
+
+</main>

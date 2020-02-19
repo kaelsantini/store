@@ -1,0 +1,42 @@
+<%= render "shared/header" %>
+
+<main role="main">
+
+  <div class="container">
+      <h1>Listing Products</h1>
+      <div class="row">
+        <div class="col-md-12 text-right">
+          <%= link_to new_product_path, class: "btn btn-primary" do %>
+            <i class="fas fa-plus"></i> New Product
+          <% end %>
+          <%= render 'shared/back_button', link: root_path %>
+        </div>
+      </div>
+
+      <div class="row">
+        <table class="table ">
+          <thead>
+          <tr>
+              <th scope="col" class="border-top-0">Name</th>
+              <th scope="col" class="border-top-0"></th>
+              <th scope="col" class="border-top-0"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if @products.any? == false %>
+              <tr><td>No Products</td></tr>
+            <% end %>
+            <% @products.each do |product| %>
+              <tr>
+                <td><%= product.name %></td>
+                <td><%= link_to 'Edit', edit_product_path(product) %></td>
+                <td><%= link_to 'Destroy', product_path(product), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+
+      </div>
+  </div>
+
+</main>

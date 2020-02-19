@@ -1,0 +1,44 @@
+<%= render "shared/header" %>
+
+<main role="main">
+
+  <div class="container">
+      <h1>Listing Categories</h1>
+      <div class="row">
+        <div class="col-md-12 text-right">
+          <%= link_to new_category_path, class: "btn btn-primary" do %>
+            <i class="fas fa-plus"></i> New Category
+          <% end %>
+          <%= render 'shared/back_button', link: root_path %>
+        </div>
+      </div>
+
+      <div class="row">
+        <table class="table ">
+          <thead>
+          <tr>
+              <th scope="col" class="border-top-0">Name</th>
+              <th scope="col" class="border-top-0"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if @categories.any? == false %>
+              <tr><td>No Categories</td></tr>
+            <% end %>
+            <% @categories.each do |category| %>
+              <tr>
+                <td><%= category.name %></td>
+                <td class="text-right">
+                    <%= link_to 'Edit', edit_category_path(category) %>
+                    <%= link_to 'Add Product', category_path(category) %>
+                    <%= link_to 'Destroy', category_path(category), method: :delete, data: { confirm: 'Are you sure?' } %>
+                </td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+
+      </div>
+  </div>
+
+</main>
