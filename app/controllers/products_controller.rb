@@ -12,7 +12,6 @@ class ProductsController < ApplicationController
 
   def create
       @product = Product.new(product_params)
-
       respond_to do |format|
        if @product.save
          format.html { redirect_to products_path, notice: 'Product successfully created' }
@@ -25,6 +24,7 @@ class ProductsController < ApplicationController
 
   def edit
       @product = Product.find(params[:id])
+      @categories = Category.all
   end
 
   def update
@@ -48,7 +48,7 @@ class ProductsController < ApplicationController
 
   private
       def product_params
-          params.require(:product).permit(:name, :price)
+          params.require(:product).permit(:name, :price, :category_id)
       end
 
 end

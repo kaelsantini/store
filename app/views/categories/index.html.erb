@@ -30,7 +30,7 @@
                 <td><%= category.name %></td>
                 <td class="text-right">
                     <%= link_to 'Edit', edit_category_path(category) %>
-                    <%= link_to 'Add Product', category_path(category) %>
+                    <%= link_to 'Show Products', category_path(category) %>
                     <%= link_to 'Destroy', category_path(category), method: :delete, data: { confirm: 'Are you sure?' } %>
                 </td>
               </tr>

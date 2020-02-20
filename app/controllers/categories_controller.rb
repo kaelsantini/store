@@ -6,7 +6,6 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    @products = Product.where.not(id: @category.products.pluck(:id))
   end
 
   def new

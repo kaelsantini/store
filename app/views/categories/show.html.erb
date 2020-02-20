@@ -3,7 +3,8 @@
 <main role="main">
 
   <div class="container">
-      <h1>Add Product to Category (<%= @category.name %>)</h1>
+      <h1>Products already added (<%= @category.name %>)</h1>
+
       <div class="row">
         <div class="col-md-12 text-right">
           <%= render 'shared/back_button', link: categories_path %>
@@ -11,9 +12,30 @@
       </div>
 
       <div class="row">
-        <h2>Products already added (<%= @category.products.length %>)</h2>
         <div class="col-md-12">
-          
+          <div class="col-md-12">
+            <table class="table">
+              <thead>
+              <tr>
+                  <th scope="col" class="border-top-0">Name</th>
+                  <th scope="col" class="border-top-0"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% if @category.products.any? == false %>
+                  <tr><td>No Products</td></tr>
+                <% end %>
+                <% @category.products.each do |product| %>
+                  <tr>
+                    <td><%= product.name %></td>
+                    <td class="text-right">
+
+                    </td>
+                  </tr>
+                <% end %>
+                </tbody>
+              </table>
+          </div>
         </div>
       </div>
   </div>
