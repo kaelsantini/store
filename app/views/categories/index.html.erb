@@ -6,7 +6,7 @@
       <h1>Listing Categories</h1>
       <div class="row">
         <div class="col-md-12 text-right">
-          <%= link_to new_category_path, class: "btn btn-primary" do %>
+          <%= link_to new_category_path, class: "btn btn-primary", autofocus: true do %>
             <i class="fas fa-plus"></i> New Category
           <% end %>
           <%= render 'shared/back_button', link: root_path %>
@@ -27,11 +27,17 @@
             <% end %>
             <% @categories.each do |category| %>
               <tr>
-                <td><%= category.name %></td>
+                <td><%= link_to category.name, edit_category_path(category) %></td>
                 <td class="text-right">
-                    <%= link_to 'Edit', edit_category_path(category) %>
-                    <%= link_to 'Show Products', category_path(category) %>
-                    <%= link_to 'Destroy', category_path(category), method: :delete, data: { confirm: 'Are you sure?' } %>
+                    <%= link_to edit_category_path(category), title: "Edit record" do %>
+                      <i class="fas fa-edit"></i>
+                    <% end %>
+                    <%= link_to category_path(category), title: "Show related products" do %>
+                      <i class="fas fa-object-group"></i>
+                    <% end %>
+                    <%= link_to category_path(category), method: :delete, data: { confirm: 'Are you sure?' }, title: "Delete record" do %>
+                      <i class="fas fa-trash"></i>
+                    <% end %>
                 </td>
               </tr>
             <% end %>

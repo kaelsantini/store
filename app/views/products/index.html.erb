@@ -6,7 +6,7 @@
       <h1>Listing Products</h1>
       <div class="row">
         <div class="col-md-12 text-right">
-          <%= link_to new_product_path, class: "btn btn-primary" do %>
+          <%= link_to new_product_path, class: "btn btn-primary", autofocus: true do %>
             <i class="fas fa-plus"></i> New Product
           <% end %>
           <%= render 'shared/back_button', link: root_path %>
@@ -19,7 +19,6 @@
           <tr>
               <th scope="col" class="border-top-0">Name</th>
               <th scope="col" class="border-top-0"></th>
-              <th scope="col" class="border-top-0"></th>
             </tr>
           </thead>
           <tbody>
@@ -29,8 +28,14 @@
             <% @products.each do |product| %>
               <tr>
                 <td><%= product.name %></td>
-                <td><%= link_to 'Edit', edit_product_path(product) %></td>
-                <td><%= link_to 'Destroy', product_path(product), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td class="text-right">
+                  <%= link_to edit_product_path(product), title: "Edit record" do %>
+                    <i class="fas fa-edit"></i>
+                  <% end %>
+                  <%= link_to product_path(product), method: :delete, data: { confirm: 'Are you sure?' }, title: "Delete record" do %>
+                    <i class="fas fa-trash"></i>
+                  <% end %>
+                </td>
               </tr>
             <% end %>
             </tbody>
