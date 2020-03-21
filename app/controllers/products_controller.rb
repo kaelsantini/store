@@ -32,7 +32,7 @@ class ProductsController < ApplicationController
 
       respond_to do |format|
         if @product.update(product_params)
-          format.html { redirect_to products_path, notice: 'product successfully updated' }
+          format.html { redirect_to products_path, notice: 'Product successfully updated' }
           format.json { render json: @product, status: :created, location: @product }
         else
           format.json { render json: @product.errors, status: :unprocessable_entity }
@@ -48,7 +48,7 @@ class ProductsController < ApplicationController
 
   private
       def product_params
-          params.require(:product).permit(:name, :price, :category_id)
+          params.require(:product).permit(:name, :price, :description, :category_id)
       end
 
 end

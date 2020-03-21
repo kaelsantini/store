@@ -1,0 +1,48 @@
+<%= render "shared/header" %>
+
+<main role="main">
+  
+    <div class="container">
+      <div class="row pt-4">
+        <div class="col">
+
+            <div class="accordion" id="accordionExample">
+
+              <% @categories.each do |category| %>
+                
+                <div class="card">
+                  <div class="card-header" id="heading_<%= category.id %>">
+                    <h2 class="mb-0">
+                      <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse_<%= category.id %>" aria-expanded="true" aria-controls="collapse_<%= category.id %>">
+                        <%= category.name %>
+                      </button>
+                    </h2>
+                  </div>
+
+                  <div id="collapse_<%= category.id %>" class="collapse" aria-labelledby="heading_<%= category.id %>" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <% category.products.each do |product| %>
+                          <div class="row row-product mb-3">
+                            <div class="col-9">
+                              <h5><%= product.name %></h5>
+                              <% if product.description.present? %>
+                                <small><%= product.description %></small>
+                              <% end %>
+                            </div>
+                            <div class="col-3 text-right">
+                              $ <%= product.price %>
+                            </div>
+                          </div>
+                        <% end %>
+                    </div>
+                  </div>
+                </div>
+
+              <% end %>
+        </div>
+      </div>
+    </div>
+
+</main>
+
+<%= render "shared/footer" %>
