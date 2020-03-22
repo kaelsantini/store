@@ -4,4 +4,5 @@ class ClientsController < ApplicationController
   	@categories = Category.all
   end
 
+  
 end
