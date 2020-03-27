@@ -6,7 +6,7 @@
       <div id="allProducts" class="row pt-4">
         <div class="col">
 
-            <div class="accordion" id="accordionExample">
+            <div class="accordion" id="accordionProducts">
 
               <% @categories.each do |category| %>
                 
@@ -19,10 +19,10 @@
                     </h2>
                   </div>
 
-                  <div id="collapse_<%= category.id %>" class="collapse" aria-labelledby="heading_<%= category.id %>" data-parent="#accordionExample">
+                  <div id="collapse_<%= category.id %>" class="collapse" aria-labelledby="heading_<%= category.id %>" data-parent="#accordionProducts">
                     <div class="card-body">
                         <% category.products.each do |product| %>
-                          <div class="row row-product mb-3">
+                          <div class="row row-product mb-3" data-product='{"id": <%= product.id %> }'>
                             <div class="col-9">
                               <h5><%= product.name %></h5>
                               <% if product.description.present? %>

@@ -5,5 +5,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :products, except: :show
 
+  get 'clients/pre_add_product', to: 'clients#pre_add_product'
+
   root 'welcome#index'
 end
