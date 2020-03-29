@@ -2,6 +2,8 @@
 
 $(document).on("turbolinks:load", function(){
   
+	var _currentProduct;
+	
 	var $_divAllProducts = $("#allProducts");
 	var $_divPreProductAdd = $("#preAddProduct");
 	var $_divEachProduct = $("div.row-product");
@@ -13,9 +15,10 @@ $(document).on("turbolinks:load", function(){
 	$_divEachProduct.click(function(){
 		var id = $(this).data("product").id;
 
-		$.getJSON("clients/pre_add_product", { id: id }, function(res){
+		$.getJSON("clients/pre_add_product", { product: id }, function(res){
+			_currentProduct = res;
 			$_productName.text(res.name);
-			$_productPrice.text(res.price);
+			$_productPrice.text("$ " + res.price);
 			$_divPreProductAdd.show();
 			$_divAllProducts.hide();
 		});
@@ -27,11 +30,21 @@ $(document).on("turbolinks:load", function(){
 	$("#btnCancel").click(function(){
 		$_divPreProductAdd.hide();
 		$_divAllProducts.show();
+		$_inputQty.val( 0 );
 		return false;
 	});
 
 	$("#btnAdd").click(function(){
-		console.log("working...");
+
+		$.post("/clients/add_product", {
+			product: _currentProduct.id,
+			quantity: $_inputQty.val()
+		}, function(res){
+			
+
+		});
+
+		return false;
 	});
 
 	$("#btnAddQty").click(function(){
