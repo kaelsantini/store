@@ -10,8 +10,6 @@ require("channels")
 
 require("bootstrap")
 
-require("mustache")
-
 require("custom/application")
 require("custom/forms")
 
