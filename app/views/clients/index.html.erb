@@ -1,7 +1,7 @@
 <%= render "shared/header" %>
 
 <main role="main">
-  
+
     <div class="container-fluid">
       <div id="allProducts" class="row pt-4">
         <div class="col">
@@ -18,7 +18,7 @@
                       </button>
                     </h2>
                   </div>
-
+                  
                   <div id="collapse_<%= category.id %>" class="collapse" aria-labelledby="heading_<%= category.id %>" data-parent="#accordionProducts">
                     <div class="card-body">
                         <% category.products.each do |product| %>

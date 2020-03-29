@@ -16,20 +16,25 @@ $(document).on("turbolinks:load", function(){
 			$_divPreProductAdd.html(_rendered);
 			$_divPreProductAdd.show();
 			$_divAllProducts.hide();
+			_fnBindEvents();
 		});
 
 		return false;
 	});
 
-	$("#btnCancel").click(function(){
-		$_divPreProductAdd.hide();
-		$_divAllProducts.show();
-		return false;
-	});
+	var _fnBindEvents = function(){
+		$("#btnCancel").unbind().on("click", function(){
+			$_divPreProductAdd.hide();
+			$_divAllProducts.show();
+			
+		});
+	
+		$("#btnAdd").unbind().on("click", function(){
+			console.log("working...");
+		});
+	};
 
-	$("#btnAdd").click(function(){
-		alert("mah oi");
-		return false;
-	});
+
+	
 
 });
