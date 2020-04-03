@@ -10,6 +10,7 @@ $(document).on("turbolinks:load", function(){
 
 	var $_productName = $(".product-name");
 	var $_productPrice = $(".product-price");
+	var $_productDescription = $(".product-description");
 	var $_inputQty = $("#inputQty");
 
 	$_divEachProduct.click(function(){
@@ -19,6 +20,7 @@ $(document).on("turbolinks:load", function(){
 			_currentProduct = res;
 			$_productName.text(res.name);
 			$_productPrice.text("$ " + res.price);
+			$_productDescription.text( res.description );
 			$_divPreProductAdd.show();
 			$_divAllProducts.hide();
 		});

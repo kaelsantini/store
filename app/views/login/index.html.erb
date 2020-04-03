@@ -1,0 +1,33 @@
+<%= render "shared/header" %>
+
+<main role="main">
+
+    <div class="container-fluid">
+      <div id="" class="row pt-4">
+        <div class="col">
+
+          <%= form_with(model: @user, url: '/clients/login', local: true) do |form| %>
+
+            <div class="form-group">
+              <%= form.label :email, 'Email address', class: 'sr-only' %>
+              <%= form.text_field :email, class: "form-control", placeholder: 'Email address', autofocus: true, required: true %>
+            </div>
+
+            <%= form.submit 'Sign in', class: "btn btn-primary btn-block", data: { "disable-with":"Loading..." } %>
+
+          <% end %>
+
+          <% flash.each do |type, msg| %>
+              <div id="errorMessage" class="alert alert-warning my-2 text-center" role="alert">
+                <i class="fas fa-exclamation-triangle"></i> <%= msg %>
+              </div>
+          <% end %>
+          
+        <div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<%= render "shared/footer" %>

@@ -1,9 +1,9 @@
 class ClientsController < ApplicationController
   
-  def index
-  	@categories = Category.all
-  end
 
+  def index
+    @categories = Category.all
+  end
   
   def pre_add_product
   	@product = Product.find(params[:product])
@@ -12,18 +12,21 @@ class ClientsController < ApplicationController
 
   def add_product
     product_params
-
-    if (session[:client_order])
-      @client_order = session[:client_order]
+    
+    if session[:order]
+      @order = Order.find( session[:order] )
     else
-      @client_order = ClientOrder.create
-      session[:client_order] = @client_order
+      @order = Order.create
+
     end
 
-    @quantity = params[:quantity]
+    @quantity = params[:quantity].to_i
     if @quantity > 0
       @product = Product.find(params[:product])
+      @client_order.add(@product, @quantity)
     end
+
+    session[:client_order] = @client_order
 
   end
 
