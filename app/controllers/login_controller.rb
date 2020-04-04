@@ -17,7 +17,7 @@ class LoginController < ApplicationController
       redirect_to :action => 'index'
     else
       session[:client_id] = @client.id
-      redirect_to(:controller => 'clients', :action => 'home')
+      redirect_to(:controller => 'clients', :action => 'index')
     end
   end
 
