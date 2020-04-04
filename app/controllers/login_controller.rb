@@ -21,4 +21,11 @@ class LoginController < ApplicationController
     end
   end
 
+  def logout
+    session[:client_id] = nil
+    session[:order_id] = nil
+    redirect_to root_path
+  end
+
+
 end

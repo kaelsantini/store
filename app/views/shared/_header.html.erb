@@ -24,6 +24,20 @@
       <% end %>
 
       <div>
+      
+      <% if logged_in? %>
+
+          <a href="" class="text-decoration-none text-white mx-3 navbar-toggle" data-toggle="collapse" data-target="#navbarHeader">
+            <i class="fas fa-user-check"></i> <%= current_client.name %>
+          </a>
+
+          <%= link_to "clients/logout", class: "text-decoration-none text-white mx-3" do %>
+            <i class="fas fa-sign-out-alt"></i> Sign out
+          <% end %>
+
+      <% end %>
+
+      
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>

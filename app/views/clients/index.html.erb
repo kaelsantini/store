@@ -42,9 +42,12 @@
         </div>
       </div>
     </div>
-    <%= render "pre_add_product" %>      
+
+    <%= render "pre_add_product" %>
+    <div id="divClientOrder" class="fixed-bottom m-3">
+      <button class="btn btn-primary btn-block">Send Order (<%= @order.products.count %> items and $<%= @order.products.sum(:total_product) %> amount) </button>
+    </div>
+    
   </div>
 
 </main>
-
-<%= render "shared/footer" %>

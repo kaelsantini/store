@@ -7,6 +7,7 @@ $(document).on("turbolinks:load", function(){
 	var $_divAllProducts = $("#allProducts");
 	var $_divPreProductAdd = $("#preAddProduct");
 	var $_divEachProduct = $("div.row-product");
+	var $_divClientOrder = $("#divClientOrder");
 
 	var $_productName = $(".product-name");
 	var $_productPrice = $(".product-price");
@@ -32,7 +33,7 @@ $(document).on("turbolinks:load", function(){
 	$("#btnCancel").click(function(){
 		$_divPreProductAdd.hide();
 		$_divAllProducts.show();
-		$_inputQty.val( 0 );
+		$_inputQty.val( 1 );
 		return false;
 	});
 
@@ -42,8 +43,9 @@ $(document).on("turbolinks:load", function(){
 			product: _currentProduct.id,
 			quantity: $_inputQty.val()
 		}, function(res){
-			
-
+			$_divPreProductAdd.hide();
+			$_divAllProducts.show();
+			$_inputQty.val( 1 );
 		});
 
 		return false;
@@ -62,7 +64,9 @@ $(document).on("turbolinks:load", function(){
 	});
 		
 	
+	var _fnRefreshClientCart = function(products) {
 
+	};
 
 	
 
