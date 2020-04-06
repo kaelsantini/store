@@ -69,9 +69,9 @@ $(document).on("turbolinks:load", function(){
 	
 	var _fnRefreshClientCart = function(products) {
 		$_divProductsCount.html( products.length );
-		var _total = 0;
+		var _total = 0.0;
 		for ( var i = 0; i < products.length; i++ ) {
-			_total += products[0].total_product;
+			_total += parseFloat( products[i].total_product );
 		}
 		$_divProductsAmount.html( _total );
 	};
