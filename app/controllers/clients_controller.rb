@@ -1,9 +1,8 @@
 class ClientsController < ApplicationController
   
-  before_action :set_order
+  before_action :set_order, except: [:pre_add_product]
 
   def set_order
-    puts "kkkkkkkkkkkkkkkkkkk"
     if session[:order_id]
       @order = Order.find( session[:order_id] )
     else
@@ -32,7 +31,7 @@ class ClientsController < ApplicationController
       @order.save
     end
 
-    render json: @order.products
+    render json: @order.order_product
   end
 
   private
